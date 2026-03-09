@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UNIQLO LifeWear Banner – 21:9</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300;0,400;0,700;0,900;1,300&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    font-family: 'Noto Sans', sans-serif;
+  }
+
+  .banner-wrapper {
+    width: 100%;
+    max-width: 1470px;
+    position: relative;
+  }
+
+  /* 21:9 aspect ratio container */
+  .banner {
+    width: 100%;
+    aspect-ratio: 21 / 9;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+    display: flex;
+  }
+
+  /* ── LEFT PANEL ── */
+  .panel-left {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+    background:
+      radial-gradient(ellipse at 70% 60%, rgba(80,60,40,0.35) 0%, transparent 60%),
+      linear-gradient(160deg, #1a1510 0%, #2c1e10 40%, #3a2918 70%, #2a1e12 100%);
+    overflow: hidden;
+  }
+
+  /* Cluttered wardrobe scene */
+  .panel-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        transparent 0px, transparent 18px,
+        rgba(255,255,255,0.018) 18px, rgba(255,255,255,0.018) 19px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px, transparent 22px,
+        rgba(255,255,255,0.012) 22px, rgba(255,255,255,0.012) 23px
+      );
+  }
+
+  /* Wardrobe shape */
+  .wardrobe {
+    position: absolute;
+    right: 4%;
+    top: 8%;
+    width: 42%;
+    height: 82%;
+    border: 2px solid rgba(140,100,60,0.5);
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(180deg, #1c120a 0%, #251810 100%);
+    box-shadow: inset -4px 0 12px rgba(0,0,0,0.5), 4px 6px 20px rgba(0,0,0,0.6);
+  }
+
+  .wardrobe::before {
+    content: '';
+    position: absolute;
+    top: 12%;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: rgba(140,100,60,0.4);
+    box-shadow: 0 35% 0 rgba(140,100,60,0.3), 0 65% 0 rgba(140,100,60,0.2);
+  }
+
+  /* Hanging clothes */
+  .clothes-hang {
+    position: absolute;
+    right: 5%;
+    top: 9%;
+    width: 40%;
+    height: 35%;
+    display: flex;
+    gap: 3%;
+    align-items: flex-start;
+    padding-top: 3%;
+  }
+
+  .hanger {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+  }
+
+  .hanger-hook {
+    width: 2px;
+    height: 12%;
+    background: rgba(180,140,80,0.7);
+  }
+
+  .hanger-top {
+    width: 60%;
+    height: 3px;
+    background: rgba(180,140,80,0.6);
+    clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+  }
+
+  .garment { width: 85%; border-radius: 0 0 3px 3px; }
+  .g1 { height: 200%; background: linear-gradient(160deg, #c45a2a 0%, #8b3a1a 100%); opacity: 0.9; }
+  .g2 { height: 180%; background: linear-gradient(160deg, #2a4a8b 0%, #1a2f5a 100%); opacity: 0.85; transform: rotate(3deg); }
+  .g3 { height: 220%; background: linear-gradient(160deg, #3a7a3a 0%, #234523 100%); opacity: 0.8; transform: rotate(-2deg); }
+  .g4 { height: 190%; background: linear-gradient(160deg, #8b7a2a 0%, #5a4e1a 100%); opacity: 0.9; transform: rotate(1deg); }
+  .g5 { height: 210%; background: linear-gradient(160deg, #7a2a6a 0%, #4a1a42 100%); opacity: 0.85; transform: rotate(-3deg); }
+
+  /* Pile of clothes on floor */
+  .clothes-pile {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 65%;
+    height: 28%;
+  }
+
+  .pile-item {
+    position: absolute;
+    border-radius: 6px;
+    opacity: 0.85;
+  }
+
+  .pi1 { width: 50%; height: 55%; bottom: 5%; left: 5%; background: linear-gradient(135deg, #c4822a, #8b5a1a); transform: rotate(-18deg); }
+  .pi2 { width: 45%; height: 45%; bottom: 15%; left: 20%; background: linear-gradient(135deg, #2a5ab5, #1a3a7a); transform: rotate(10deg); }
+  .pi3 { width: 55%; height: 40%; bottom: 2%; left: 35%; background: linear-gradient(135deg, #4a4a4a, #2a2a2a); transform: rotate(-5deg); }
+  .pi4 { width: 40%; height: 50%; bottom: 10%; right: 5%; background: linear-gradient(135deg, #b53a3a, #7a2020); transform: rotate(22deg); }
+
+  /* Cool blue-grey vignette overlay on left */
+  .panel-left::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 15% 50%, rgba(60,80,120,0.25) 0%, transparent 65%),
+      linear-gradient(to right, rgba(20,30,50,0.4) 0%, transparent 80%);
+    pointer-events: none;
+  }
+
+  /* Woman figure LEFT */
+  .woman-left {
+    position: absolute;
+    bottom: 0;
+    left: 8%;
+    width: 38%;
+    height: 88%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 2;
+  }
+
+  /* SVG-style woman silhouette left */
+  .figure-left {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  /* Stylised woman body using CSS shapes */
+  .body-base {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52%;
+    height: 95%;
+  }
+
+  /* Head */
+  .head {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 42%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #f5c9a0 0%, #e8a870 60%, #c9845a 100%);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+
+  /* Messy hair left */
+  .hair-left {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 52%;
+    height: 42%;
+    background: #1a0e06;
+    border-radius: 50% 50% 20% 20%;
+    z-index: -1;
+  }
+
+  .hair-strand {
+    position: absolute;
+    background: #1a0e06;
+    border-radius: 50%;
+  }
+  .hs1 { width: 20%; height: 30%; top: 5%; left: -8%; transform: rotate(-30deg); }
+  .hs2 { width: 15%; height: 25%; top: 0%; left: 5%; transform: rotate(-15deg); }
+  .hs3 { width: 18%; height: 28%; top: 2%; right: -6%; transform: rotate(25deg); }
+
+  /* Neck */
+  .neck {
+    position: absolute;
+    top: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16%;
+    height: 8%;
+    background: linear-gradient(180deg, #f0b888 0%, #e09060 100%);
+  }
+
+  /* Torso with colourful mismatched top */
+  .torso {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 62%;
+    height: 30%;
+    background: linear-gradient(135deg, #c45020 0%, #8b2a10 50%, #d46030 100%);
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+
+  /* Arms holding clothes up */
+  .arm-left-char {
+    position: absolute;
+    top: 30%;
+    left: 2%;
+    width: 18%;
+    height: 42%;
+    background: linear-gradient(180deg, #f0b888 0%, #e09060 100%);
+    border-radius: 50px;
+    transform: rotate(-40deg);
+    transform-origin: top right;
+  }
+
+  .arm-right-char {
+    position: absolute;
+    top: 30%;
+    right: 2%;
+    width: 18%;
+    height: 42%;
+    background: linear-gradient(180deg, #f0b888 0%, #e09060 100%);
+    border-radius: 50px;
+    transform: rotate(40deg);
+    transform-origin: top left;
+  }
+
+  /* Held garments */
+  .held-left {
+    position: absolute;
+    top: 18%;
+    left: -30%;
+    width: 55%;
+    height: 45%;
+    background: linear-gradient(160deg, #2a4a9a, #1a2f6a);
+    border-radius: 4px;
+    transform: rotate(-15deg);
+    opacity: 0.9;
+  }
+
+  .held-right {
+    position: absolute;
+    top: 15%;
+    right: -30%;
+    width: 50%;
+    height: 42%;
+    background: linear-gradient(160deg, #a03030, #6a1818);
+    border-radius: 4px;
+    transform: rotate(20deg);
+    opacity: 0.9;
+  }
+
+  /* Lower body / legs */
+  .lower-body {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 43%;
+    background: linear-gradient(180deg, #3a5a9a 0%, #253d7a 100%);
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+  }
+
+  /* Wrinkle lines on pants */
+  .lower-body::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg, transparent 0, transparent 48%, rgba(255,255,255,0.06) 49%, transparent 50%
+    );
+  }
+
+  /* Confused expression dot eyes */
+  .eye { position: absolute; width: 14%; aspect-ratio: 1; background: #2a1a0a; border-radius: 50%; top: 32%; }
+  .eye-l { left: 28%; }
+  .eye-r { right: 28%; }
+
+  /* Squiggly brow */
+  .brow { position: absolute; width: 18%; height: 3%; background: #1a0e06; border-radius: 50%; top: 26%; }
+  .brow-l { left: 24%; transform: rotate(-15deg) scaleY(1.5); }
+  .brow-r { right: 24%; transform: rotate(15deg) scaleY(1.5); }
+
+  /* Frown mouth */
+  .mouth-frown {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 8%;
+    border: 3px solid #8a4a2a;
+    border-top: none;
+    border-radius: 0 0 50px 50px;
+  }
+
+  /* ── RIGHT PANEL ── */
+  .panel-right {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    flex-shrink: 0;
+    background:
+      radial-gradient(ellipse at 40% 50%, rgba(255,220,150,0.3) 0%, transparent 60%),
+      linear-gradient(160deg, #e8d5b0 0%, #d4c090 20%, #c8b070 40%, #b89050 60%, #a07830 80%, #c8a060 100%);
+    overflow: hidden;
+  }
+
+  /* City street bokeh circles */
+  .bokeh {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,220,100,0.15);
+    filter: blur(20px);
+    pointer-events: none;
+  }
+
+  .b1 { width: 18%; aspect-ratio: 1; top: 5%; right: 15%; }
+  .b2 { width: 12%; aspect-ratio: 1; top: 20%; right: 5%; background: rgba(200,240,180,0.15); }
+  .b3 { width: 22%; aspect-ratio: 1; bottom: 15%; right: 8%; background: rgba(255,200,100,0.12); }
+  .b4 { width: 10%; aspect-ratio: 1; top: 40%; right: 30%; }
+  .b5 { width: 8%; aspect-ratio: 1; bottom: 30%; right: 20%; background: rgba(180,230,160,0.2); }
+
+  /* Trees / architecture blur */
+  .tree {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(180deg, #3a6a2a 0%, #2a4a1a 100%);
+    border-radius: 60% 60% 0 0;
+    opacity: 0.45;
+    filter: blur(6px);
+  }
+
+  .t1 { width: 8%; height: 55%; right: 3%; }
+  .t2 { width: 10%; height: 65%; right: 10%; opacity: 0.35; }
+  .t3 { width: 6%; height: 45%; right: 20%; opacity: 0.25; }
+
+  /* Building shapes */
+  .building {
+    position: absolute;
+    bottom: 0;
+    background: rgba(180,160,120,0.3);
+    filter: blur(8px);
+  }
+
+  .bl1 { width: 15%; height: 60%; right: 25%; }
+  .bl2 { width: 10%; height: 75%; right: 35%; opacity: 0.6; }
+
+  /* Sidewalk / ground */
+  .ground {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 22%;
+    background: linear-gradient(180deg, rgba(180,160,130,0.5) 0%, rgba(160,140,110,0.7) 100%);
+  }
+
+  .ground::before {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: 0; right: 0;
+    height: 2px;
+    background: rgba(255,255,255,0.25);
+  }
+
+  /* Warm sunlight overlay */
+  .panel-right::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(255,230,150,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 20% 20%, rgba(255,200,80,0.2) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  /* Woman figure RIGHT */
+  .woman-right {
+    position: absolute;
+    bottom: 0;
+    left: 12%;
+    width: 42%;
+    height: 96%;
+    z-index: 2;
+  }
+
+  .figure-right {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  /* Neat hair right */
+  .hair-right {
+    position: absolute;
+    top: -4%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 48%;
+    height: 36%;
+    background: #0f0805;
+    border-radius: 50% 50% 15% 15%;
+    z-index: -1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+
+  /* UNIQLO outfit: cream tee */
+  .torso-right {
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 28%;
+    background: linear-gradient(145deg, #f5f0e8 0%, #ede5d8 60%, #e0d5c5 100%);
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  }
+
+  /* Subtle fold line */
+  .torso-right::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 20%;
+    right: 20%;
+    height: 1px;
+    background: rgba(0,0,0,0.06);
+  }
+
+  /* Wide leg denim */
+  .lower-right {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 45%;
+    background: linear-gradient(180deg, #a8b8cc 0%, #8090a8 50%, #6878a0 100%);
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  /* Wide leg flare */
+  .lower-right::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -10%;
+    right: -10%;
+    height: 30%;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.08));
+    clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+  }
+
+  /* Clean sneakers */
+  .feet {
+    position: absolute;
+    bottom: -2%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 75%;
+    height: 7%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .shoe {
+    width: 42%;
+    height: 100%;
+    background: linear-gradient(145deg, #fafafa 0%, #e8e8e8 100%);
+    border-radius: 50px 50px 30px 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .shoe-r { transform: scaleX(-1); }
+
+  /* Arms right – relaxed walk */
+  .arm-left-r {
+    position: absolute;
+    top: 31%;
+    left: 8%;
+    width: 16%;
+    height: 36%;
+    background: linear-gradient(180deg, #f0b888 0%, #e09060 100%);
+    border-radius: 50px;
+    transform: rotate(15deg);
+    transform-origin: top center;
+  }
+
+  .arm-right-r {
+    position: absolute;
+    top: 31%;
+    right: 8%;
+    width: 16%;
+    height: 36%;
+    background: linear-gradient(180deg, #f0b888 0%, #e09060 100%);
+    border-radius: 50px;
+    transform: rotate(-20deg);
+    transform-origin: top center;
+  }
+
+  /* Tote bag */
+  .tote {
+    position: absolute;
+    top: 52%;
+    right: -5%;
+    width: 28%;
+    height: 25%;
+    background: linear-gradient(145deg, #e8e0d0 0%, #d0c8b8 60%, #c0b8a8 100%);
+    border-radius: 6px 6px 8px 8px;
+    box-shadow: 2px 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .tote::before {
+    content: '';
+    position: absolute;
+    top: -18%;
+    left: 15%;
+    right: 15%;
+    height: 22%;
+    border: 2px solid #b0a890;
+    border-bottom: none;
+    border-radius: 50% 50% 0 0;
+  }
+
+  .tote::after {
+    content: '';
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: rgba(0,0,0,0.1);
+  }
+
+  /* Smile */
+  .mouth-smile {
+    position: absolute;
+    bottom: 22%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 8%;
+    border: 2.5px solid #8a5a3a;
+    border-bottom: none;
+    border-radius: 50px 50px 0 0;
+  }
+
+  /* Eyes right (happy, slightly squinted) */
+  .eye-happy {
+    position: absolute;
+    width: 14%;
+    height: 6%;
+    background: #2a1a0a;
+    border-radius: 0 0 50% 50%;
+    top: 32%;
+  }
+
+  .eye-hl { left: 28%; }
+  .eye-hr { right: 28%; }
+
+  /* ── DIVIDER LINE ── */
+  .divider {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg,
+      rgba(255,255,255,0) 0%,
+      rgba(255,255,255,0.85) 20%,
+      rgba(255,255,255,0.9) 50%,
+      rgba(255,255,255,0.85) 80%,
+      rgba(255,255,255,0) 100%
+    );
+    z-index: 10;
+    transform: translateX(-50%);
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(255,255,255,0.8);
+  }
+
+  .divider::before { top: 45%; }
+  .divider::after  { top: 55%; }
+
+  /* ── TEXT OVERLAY ── */
+  .text-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    pointer-events: none;
+  }
+
+  /* Headline */
+  .headline {
+    position: absolute;
+    top: 5%;
+    left: 2%;
+    right: 2%;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 900;
+    font-size: clamp(0.9rem, 2.2vw, 2rem);
+    color: #ffffff;
+    text-shadow:
+      0 2px 4px rgba(0,0,0,0.8),
+      0 0 30px rgba(0,0,0,0.6);
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+  }
+
+  /* Sub-headline */
+  .subheadline {
+    position: absolute;
+    top: 22%;
+    left: 4%;
+    right: 4%;
+    text-align: center;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(0.5rem, 1.05vw, 0.9rem);
+    color: rgba(255,255,255,0.92);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+    letter-spacing: 0.025em;
+    line-height: 1.5;
+  }
+
+  /* Labels */
+  .label {
+    position: absolute;
+    top: 36%;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.55rem, 1.1vw, 1rem);
+    letter-spacing: 0.18em;
+    padding: 3px 12px;
+    border-radius: 2px;
+  }
+
+  .label-before {
+    left: 3%;
+    color: #ff8a65;
+    background: rgba(0,0,0,0.45);
+    border-left: 3px solid #ff6b35;
+  }
+
+  .label-after {
+    right: 3%;
+    color: #a8d8a0;
+    background: rgba(0,0,0,0.35);
+    border-right: 3px solid #72c472;
+  }
+
+  /* Slogan bottom right */
+  .slogan {
+    position: absolute;
+    bottom: 16%;
+    right: 2%;
+    text-align: right;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(0.42rem, 0.85vw, 0.75rem);
+    color: rgba(255,255,255,0.95);
+    text-shadow: 0 1px 6px rgba(0,0,0,0.6);
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
+
+  .slogan span {
+    display: block;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 0.88em;
+    color: rgba(255,255,255,0.8);
+  }
+
+  /* CTA Button */
+  .cta-btn {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffffff;
+    color: #FF0000;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 900;
+    font-size: clamp(0.5rem, 1.1vw, 0.95rem);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: clamp(4px, 0.9%, 10px) clamp(12px, 3%, 36px);
+    border-radius: 2px;
+    box-shadow:
+      0 4px 20px rgba(255,0,0,0.35),
+      0 2px 8px rgba(0,0,0,0.4);
+    border: 2px solid rgba(255,0,0,0.2);
+    white-space: nowrap;
+  }
+
+  /* UNIQLO logo badge */
+  .uniqlo-logo {
+    position: absolute;
+    bottom: 14%;
+    right: 2.5%;
+    background: #FF0000;
+    color: white;
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 900;
+    font-size: clamp(0.5rem, 1vw, 0.9rem);
+    letter-spacing: 0.12em;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  /* ── NOISE TEXTURE ── */
+  .noise {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 150px 150px;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+<div class="banner-wrapper">
+  <div class="banner">
+
+    <!-- ═══════ LEFT PANEL ═══════ -->
+    <div class="panel-left">
+
+      <!-- Wardrobe -->
+      <div class="wardrobe"></div>
+
+      <!-- Hanging clothes -->
+      <div class="clothes-hang">
+        <div class="hanger"><div class="hanger-hook"></div><div class="hanger-top"></div><div class="garment g1"></div></div>
+        <div class="hanger"><div class="hanger-hook"></div><div class="hanger-top"></div><div class="garment g2"></div></div>
+        <div class="hanger"><div class="hanger-hook"></div><div class="hanger-top"></div><div class="garment g3"></div></div>
+        <div class="hanger"><div class="hanger-hook"></div><div class="hanger-top"></div><div class="garment g4"></div></div>
+        <div class="hanger"><div class="hanger-hook"></div><div class="hanger-top"></div><div class="garment g5"></div></div>
+      </div>
+
+      <!-- Clothes on floor -->
+      <div class="clothes-pile">
+        <div class="pile-item pi1"></div>
+        <div class="pile-item pi2"></div>
+        <div class="pile-item pi3"></div>
+        <div class="pile-item pi4"></div>
+      </div>
+
+      <!-- Woman figure left -->
+      <div class="woman-left">
+        <div class="figure-left">
+          <div class="body-base">
+            <div class="hair-left">
+              <div class="hair-strand hs1"></div>
+              <div class="hair-strand hs2"></div>
+              <div class="hair-strand hs3"></div>
+            </div>
+            <div class="head">
+              <div class="brow brow-l"></div>
+              <div class="brow brow-r"></div>
+              <div class="eye eye-l"></div>
+              <div class="eye eye-r"></div>
+              <div class="mouth-frown"></div>
+            </div>
+            <div class="neck"></div>
+            <div class="arm-left-char">
+              <div class="held-left"></div>
+            </div>
+            <div class="arm-right-char">
+              <div class="held-right"></div>
+            </div>
+            <div class="torso"></div>
+            <div class="lower-body"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════ RIGHT PANEL ═══════ -->
+    <div class="panel-right">
+      <div class="bokeh b1"></div>
+      <div class="bokeh b2"></div>
+      <div class="bokeh b3"></div>
+      <div class="bokeh b4"></div>
+      <div class="bokeh b5"></div>
+
+      <div class="building bl1"></div>
+      <div class="building bl2"></div>
+      <div class="tree t1"></div>
+      <div class="tree t2"></div>
+      <div class="tree t3"></div>
+      <div class="ground"></div>
+
+      <!-- Woman figure right -->
+      <div class="woman-right">
+        <div class="figure-right">
+          <div class="body-base">
+            <div class="hair-right"></div>
+            <div class="head">
+              <div class="eye-happy eye-hl"></div>
+              <div class="eye-happy eye-hr"></div>
+              <div class="mouth-smile"></div>
+            </div>
+            <div class="neck"></div>
+            <div class="arm-left-r"></div>
+            <div class="arm-right-r"></div>
+            <div class="torso-right"></div>
+            <div class="tote"></div>
+            <div class="lower-right"></div>
+            <div class="feet">
+              <div class="shoe"></div>
+              <div class="shoe shoe-r"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Noise texture -->
+    <div class="noise"></div>
+
+    <!-- ═══════ TEXT OVERLAY ═══════ -->
+    <div class="text-overlay">
+      <div class="headline">
+        Tủ đồ đầy ắp, nhưng bạn vẫn "không có gì để mặc"?
+      </div>
+      <div class="subheadline">
+        Đừng để những xu hướng nhất thời làm khó buổi sáng của bạn.<br>
+        Đã đến lúc tối giản hóa phong cách để tận hưởng sự thoải mái cả ngày dài.
+      </div>
+
+      <div class="label label-before">TRƯỚC ✕</div>
+      <div class="label label-after">SAU ✓</div>
+
+      <div class="uniqlo-logo">UNIQLO</div>
+
+      <div class="slogan">
+        Basics that stick.
+        <span>Những điều đơn giản luôn ở lại.</span>
+      </div>
+
+      <div class="cta-btn">
+        Khám phá giải pháp LifeWear
+      </div>
+    </div>
+
+  </div><!-- .banner -->
+</div><!-- .banner-wrapper -->
+</body>
+</html>
